@@ -11,6 +11,9 @@ class SafeHtml {
   toString() { return this.value; }
 }
 
+/** Mark a static, developer-authored string as safe HTML. Never pass API data here. */
+export const trusted = (markup) => new SafeHtml(markup);
+
 /**
  * Tagged template that escapes every interpolated value unless it is SafeHtml.
  * Arrays are joined, so `${items.map(i => html`...`)}` works.

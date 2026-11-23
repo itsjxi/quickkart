@@ -1,63 +1,48 @@
-import { html, formatPrice } from '../utils/dom.js';
+import { html } from '../utils/dom.js';
+import { icons } from '../utils/icons.js';
 import { AISLES, OTHER_AISLE, DELIVERY_ETA_MINUTES } from '../config.js';
-import { quantityControl } from './productCard.js';
+import { quantityControl, priceLine } from './productCard.js';
 
 const aisleLabel = (id) => (AISLES.find((a) => a.id === id) ?? OTHER_AISLE).label;
-const stars = (rating) => '★'.repeat(Math.round(rating)) + '☆'.repeat(5 - Math.round(rating));
 
-export function renderProductModal(root, product, cart) {
+export function renderProductModal(root, product, { cart, notify }) {
   const qty = cart.quantityOf(product.id);
+  const opts = { atLimit: cart.isAtStockLimit(product.id), notified: notify.has(product.id), size: 'lg' };
   root.innerHTML = html`
-    <div class="overlay" data-action="close-modal"></div>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" data-action="close-modal" aria-label="Close">✕</button>
-      <div class="modal-gallery">
-        <div class="modal-image"><img src="${product.images[0]}" alt="${product.name}" data-main-image></div>
+    <div class="scrim" data-action="close-modal"></div>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+      <button class="icon-btn sheet-close" data-action="close-modal" aria-label="Close">${icons.close(18)}</button>
+      <div class="sheet-media">
+        <div class="sheet-image"><img src="${product.images[0]}" alt="${product.name}" data-main-image></div>
         ${product.images.length > 1 ? html`
-          <div class="thumbs">
-            ${product.images.map((src, i) => html`
-              <button class="thumb ${i === 0 ? 'active' : ''}" data-action="show-image" data-src="${src}"
-                aria-label="Image ${i + 1}"><img src="${src}" alt=""></button>`)}
+          <div class="thumbs">${product.images.map((src, i) => html`
+            <button class="thumb ${i === 0 ? 'is-active' : ''}" data-action="show-image" data-src="${src}"
+              aria-label="Show image ${i + 1}"><img src="${src}" alt=""></button>`)}
           </div>` : ''}
       </div>
-      <div class="modal-info">
-        <p class="crumbs">${aisleLabel(product.aisle)}</p>
-        <h2 id="modal-title">${product.name}</h2>
-        ${product.brand ? html`<p class="brand">by ${product.brand}</p>` : ''}
-        <p class="rating-line"><span class="stars" aria-hidden="true">${stars(product.rating)}</span>
-          ${product.rating} · ${product.reviews.length} reviews</p>
-
-        <div class="modal-price">
-          <strong>${formatPrice(product.price)}</strong>
-          ${product.mrp > product.price ? html`<s>MRP ${formatPrice(product.mrp)}</s>
-            <span class="badge-discount inline">${product.discount}% OFF</span>` : ''}
-        </div>
-        <p class="tax-note">Inclusive of all taxes</p>
-
-        <div class="modal-cta" data-qty-slot="${product.id}" data-size="lg" data-rendered="${qty}|${cart.isAtStockLimit(product.id)}">
-          ${quantityControl(product, qty, { atLimit: cart.isAtStockLimit(product.id), size: 'lg' })}
-        </div>
-        ${product.lowStock ? html`<p class="low-stock">Hurry, only ${product.stock} left</p>` : ''}
-
-        <ul class="perks">
-          <li>⚡ Delivered in ${DELIVERY_ETA_MINUTES} minutes</li>
-          ${product.returnPolicy ? html`<li>↩️ ${product.returnPolicy}</li>` : ''}
+      <div class="sheet-info">
+        <p class="eyebrow">${aisleLabel(product.aisle)}${product.brand ? html` · ${product.brand}` : ''}</p>
+        <h2 id="sheet-title">${product.name}</h2>
+        <p class="sheet-rating">${icons.star(13)} ${product.rating.toFixed(1)}
+          <span class="muted">(${product.reviews.length} reviews)</span></p>
+        ${priceLine(product)}
+        <div class="sheet-cta" data-qty-slot="${product.id}" data-size="lg">${quantityControl(product, qty, opts)}</div>
+        <ul class="facts">
+          <li>${icons.bolt(14)} Arrives in about ${DELIVERY_ETA_MINUTES} minutes</li>
+          ${product.lowStock ? html`<li class="few-left">Only ${product.stock} left in stock</li>` : ''}
+          ${product.returnPolicy ? html`<li>${product.returnPolicy}</li>` : ''}
         </ul>
-
-        <h3>About this item</h3>
-        <p class="description">${product.description}</p>
-
+        <h3>About</h3>
+        <p class="muted">${product.description}</p>
         ${product.reviews.length ? html`
-          <h3>Customer reviews</h3>
-          <ul class="reviews">
-            ${product.reviews.slice(0, 3).map((r) => html`
-              <li><span class="stars small" aria-label="${r.rating} out of 5">${stars(r.rating)}</span>
-                <strong>${r.reviewerName}</strong><p>${r.comment}</p></li>`)}
-          </ul>` : ''}
+          <h3>Reviews</h3>
+          <ul class="reviews">${product.reviews.slice(0, 3).map((r) => html`
+            <li><p><span class="rating">${icons.star(11)} ${r.rating}</span> <b>${r.reviewerName}</b></p>
+              <p class="muted">${r.comment}</p></li>`)}</ul>` : ''}
       </div>
     </div>`.value;
   root.hidden = false;
-  root.querySelector('.modal-close').focus();
+  root.querySelector('.sheet-close').focus();
 }
 
 export function closeProductModal(root) {

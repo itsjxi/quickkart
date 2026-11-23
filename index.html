@@ -3,47 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="QuickKart: groceries and essentials delivered in minutes. A vanilla JavaScript MVC storefront.">
-  <meta name="theme-color" content="#0c831f">
+  <meta name="description" content="QuickKart: groceries and essentials in about 10 minutes. A vanilla JavaScript storefront.">
+  <meta name="theme-color" content="#fafaf8">
   <title>QuickKart · Groceries in minutes</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23111%22/><circle cx=%2223%22 cy=%2223%22 r=%224%22 fill=%22%2316a34a%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://dummyjson.com">
   <link rel="preconnect" href="https://cdn.dummyjson.com">
 </head>
 <body>
   <div id="app">
-    <a class="skip-link" href="#products">Skip to products</a>
+    <a class="skip-link" href="#content">Skip to products</a>
     <header class="site-header" data-region="header"></header>
+    <nav class="tabs-bar" data-region="aisles" aria-label="Aisles"></nav>
 
-    <section class="promo" aria-label="Offers">
-      <div class="container promo-inner">
-        <div class="promo-card promo-green">
-          <p class="promo-kicker">Stock up on daily essentials</p>
-          <h2>Fresh groceries,<br>delivered in minutes</h2>
-          <p>Free delivery on orders over $20</p>
-        </div>
-        <div class="promo-card promo-yellow"><h3>Kitchen upgrades</h3><p>Tools &amp; cookware</p><span aria-hidden="true">🍳</span></div>
-        <div class="promo-card promo-pink"><h3>Self-care picks</h3><p>Beauty &amp; fragrance</p><span aria-hidden="true">💄</span></div>
-      </div>
-    </section>
-
-    <nav class="aisle-bar" data-region="aisles" aria-label="Aisles"></nav>
-
-    <main id="products" class="container">
-      <div data-region="toolbar"></div>
-      <div class="grid" data-region="grid" aria-live="polite"></div>
-    </main>
+    <main id="content" class="container content" data-region="content" aria-live="polite"></main>
 
     <footer class="site-footer">
       <div class="container">
-        <p>QuickKart is a demo storefront. Product data from <a href="https://dummyjson.com" rel="noopener">DummyJSON</a>.</p>
+        <p>QuickKart is a demo storefront built with vanilla JavaScript. Product data: <a href="https://dummyjson.com" rel="noopener">DummyJSON</a>.</p>
       </div>
     </footer>
 
     <div class="modal-root" data-region="modal" hidden></div>
-    <div class="drawer-backdrop" data-region="cart-backdrop" data-action="close-cart" hidden></div>
-    <aside class="drawer" data-region="cart" aria-labelledby="cart-title" role="dialog" aria-modal="true" hidden></aside>
+    <div class="backdrop" data-region="cart-backdrop" data-action="close-cart" hidden></div>
+    <aside class="drawer" data-region="cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden></aside>
     <div class="cart-bar-root" data-region="cart-bar" hidden></div>
+    <div class="snackbar-root" data-region="snackbar" hidden></div>
     <div class="visually-hidden" data-region="announcer" aria-live="polite"></div>
   </div>
   <script type="module" src="/src/main.js"></script>

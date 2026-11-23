@@ -62,3 +62,49 @@ export function visibleProducts(products, { aisle = 'all', query = '', sort = 'r
   const compare = SORTS[sort]?.compare;
   return compare ? [...list].sort(compare) : list;
 }
+
+/** Home-page shelves: one row per aisle, best-rated in-stock items first. */
+export function shelves(products, perShelf = 8) {
+  return aislesWithCounts(products).map((aisle) => ({
+    ...aisle,
+    items: products
+      .filter((p) => p.aisle === aisle.id)
+      .sort((a, b) => (b.stock > 0) - (a.stock > 0) || b.rating - a.rating)
+      .slice(0, perShelf),
+  }));
+}
+
+/**
+ * "You might also need": in-stock items not already in the cart, preferring
+ * aisles the shopper is already buying from, then rating.
+ */
+export function suggestionsFor(cartIds, products, limit = 6) {
+  const inCart = new Set(cartIds.map(Number));
+  const cartAisles = new Set(products.filter((p) => inCart.has(p.id)).map((p) => p.aisle));
+  return products
+    .filter((p) => !inCart.has(p.id) && p.stock > 0)
+    .sort((a, b) => (cartAisles.has(b.aisle) - cartAisles.has(a.aisle)) || b.rating - a.rating)
+    .slice(0, limit);
+}
+
+/** Split text into [{ text, match }] parts for highlighting the search query. */
+export function highlightParts(text, query) {
+  const words = normalize(query).split(/\s+/).filter(Boolean);
+  if (!words.length) return [{ text, match: false }];
+  const lower = normalize(text);
+  const marks = new Array(text.length).fill(false);
+  for (const word of words) {
+    let i = lower.indexOf(word);
+    while (i !== -1) {
+      for (let j = i; j < i + word.length; j++) marks[j] = true;
+      i = lower.indexOf(word, i + word.length);
+    }
+  }
+  const parts = [];
+  for (let i = 0; i < text.length; i++) {
+    const last = parts[parts.length - 1];
+    if (last && last.match === marks[i]) last.text += text[i];
+    else parts.push({ text: text[i], match: marks[i] });
+  }
+  return parts;
+}

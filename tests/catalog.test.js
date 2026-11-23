@@ -53,3 +53,38 @@ describe('visibleProducts', () => {
     expect(visibleProducts([...products, soldOut], { inStockOnly: true })).not.toContain(soldOut);
   });
 });
+
+import { shelves, suggestionsFor, highlightParts } from '../src/model/catalog.js';
+
+describe('shelves', () => {
+  it('groups products into one shelf per aisle, best rated first', () => {
+    const rows = shelves(products, 8);
+    const dairy = rows.find((r) => r.id === 'dairy');
+    expect(dairy.items.map((p) => p.name)).toEqual(['Milk', 'Eggs']); // 2.6 > 2.5
+    expect(rows.every((r) => r.items.length > 0)).toBe(true);
+  });
+
+  it('puts sold-out items at the end of a shelf', () => {
+    const soldOut = { ...byName('Milk'), id: 900, rating: 5, stock: 0 };
+    const dairy = shelves([...products, soldOut]).find((r) => r.id === 'dairy');
+    expect(dairy.items.at(-1)).toBe(soldOut);
+  });
+});
+
+describe('suggestionsFor', () => {
+  it('suggests in-stock items not in the cart, from the aisles being shopped first', () => {
+    const milk = byName('Milk');
+    const picks = suggestionsFor([String(milk.id)], products, 3);
+    expect(picks.map((p) => p.id)).not.toContain(milk.id);
+    expect(picks[0].name).toBe('Eggs'); // same aisle as milk
+  });
+});
+
+describe('highlightParts', () => {
+  it('marks matched words case-insensitively', () => {
+    expect(highlightParts('Green Chili Pepper', 'chili')).toEqual([
+      { text: 'Green ', match: false }, { text: 'Chili', match: true }, { text: ' Pepper', match: false },
+    ]);
+    expect(highlightParts('Milk', '')).toEqual([{ text: 'Milk', match: false }]);
+  });
+});

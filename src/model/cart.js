@@ -57,6 +57,8 @@ export function createCart({ storage = globalThis.localStorage } = {}) {
       });
     },
 
+    /** Set an exact quantity (used to undo a removal). */
+    set: (id, qty) => setQuantity(id, qty),
     increment: (id) => setQuantity(id, (store.getState().quantities[id] ?? 0) + 1),
     decrement: (id) => setQuantity(id, (store.getState().quantities[id] ?? 0) - 1),
     remove: (id) => setQuantity(id, 0),

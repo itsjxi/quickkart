@@ -8,14 +8,27 @@ A quick-commerce grocery storefront in the style of 10-minute delivery apps, bui
 
 ## Features
 
-- **Live catalog.** About 75 products from six DummyJSON categories are loaded in parallel and grouped into store aisles (Fruits & Vegetables, Dairy & Eggs, Beverages, Kitchen, Beauty…) using each product's category and tags.
-- **Instant search** across names, brands and tags. It's case- and accent-insensitive, every word must match, and name matches rank first. Press `/` to focus it.
-- **Sorting and filters:** price, biggest discount, top rated, and in stock only.
-- **Cart that behaves like a real one.** Quantities are capped at live stock. The cart survives reloads and re-syncs with the catalog on load, so it never shows stale prices or vanished items.
-- **Bill details:** MRP vs selling price, savings, delivery fee with a free-delivery progress bar, handling fee and grand total. Money is rounded to cents, with no floating-point drift.
-- **Product sheet** with an image gallery, rating, reviews and return policy. On mobile it's a bottom sheet.
-- **Checkout flow** with an order-confirmation state (demo only: no payment is taken).
-- **UI details:** skeleton loading, error state with retry, empty states, dark mode (follows the OS setting, remembered after that), a sticky mobile cart bar, and reduced-motion support.
+QuickKart is deliberately quiet: off-white canvas, black type, one green accent that only ever means "savings" or "progress", and no banners competing with the products. The interesting work is in the small interaction decisions.
+
+**Browsing**
+- **Shelves, then grids.** The home page is one shelf per aisle, each with a "See all" that turns into a filterable grid (sort, in-stock only). Search switches to the grid automatically.
+- **Live catalog.** About 75 products from six DummyJSON categories are loaded in parallel and mapped into store aisles using each product's category and tags.
+- **Search that explains itself.** Case- and accent-insensitive, every word must match, name matches rank first, and the matched text is highlighted. `/` focuses it, `Esc` clears it. No results? You get aisle shortcuts rather than a dead end.
+
+**Adding to cart**
+- **The + becomes the stepper in place.** No layout jump, focus stays on the button you pressed, and the card keeps a quiet "in cart" state.
+- **Limits are explained, not silent.** At the stock limit the + dims and the card says "Only 3 available" (also announced to screen readers).
+- **Removing is undoable.** Dropping an item to zero shows "Removed Milk · Undo" for five seconds.
+- **Sold out means "Notify me".** Out-of-stock items offer an alert toggle (remembered between visits) instead of a disabled button.
+
+**Cart**
+- **Free-delivery nudge** with a progress bar ("Add $16.51 more for free delivery").
+- **"You might also need"**: in-stock picks from the same aisles that you can add without leaving the cart.
+- **An honest bill:** MRP vs selling price, savings, delivery, handling and a total that's repeated on the checkout button. Money is rounded to cents, with no floating-point drift.
+- The cart survives reloads and re-syncs with the catalog, so it never shows stale prices or vanished items.
+
+**Everything else**
+- Product sheet with gallery, rating and reviews (a bottom sheet on mobile), skeleton loading, error state with retry, dark mode, sticky mobile cart bar, live-region announcements and reduced-motion support.
 
 ## Architecture
 
@@ -57,7 +70,7 @@ The tests use real DummyJSON responses captured as fixtures (`tests/fixtures`). 
 - search ranking and sorting
 - cart stock caps, persistence and bill maths
 - HTML escaping
-- full-app flows: loading → add → stepper → filters → product modal → cart → checkout, error and retry, a restored cart, and a script-injection attempt
+- full-app flows: shelves → "See all" grid, add → stepper → stock-limit hint, undo, notify-me, search highlight and empty state, product sheet, free-delivery nudge and suggestions, checkout, error and retry, a restored cart, and a script-injection attempt
 
 CI runs lint, tests and a production build on every push.
 

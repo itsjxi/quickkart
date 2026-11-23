@@ -3,19 +3,22 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "QuickKart - Modern Grocery Delivery App",
+  "description": "QuickKart: quick-commerce grocery storefront in vanilla JavaScript (MVC), powered by the DummyJSON products API",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
-    "vite": "^4.4.5"
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^15.15.0",
+    "jsdom": "^25.0.1",
+    "vite": "^5.4.21",
+    "vitest": "^2.1.9"
   },
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.4.2"
-  },
-  "keywords": ["grocery", "delivery", "quickkart", "ecommerce"],
-  "author": "",
   "license": "MIT"
 }

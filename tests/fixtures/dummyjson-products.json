@@ -1,0 +1,334 @@
+{
+    "groceries": [
+        {
+            "id": 16,
+            "title": "Apple",
+            "description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
+            "category": "groceries",
+            "price": 1.99,
+            "discountPercentage": 12.62,
+            "rating": 4.19,
+            "stock": 8,
+            "tags": [
+                "fruits"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/apple/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/apple/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 5,
+                    "comment": "Very satisfied!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Sophia Brown"
+                },
+                {
+                    "rating": 1,
+                    "comment": "Very dissatisfied!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Scarlett Bowman"
+                }
+            ],
+            "returnPolicy": "90 days return policy"
+        },
+        {
+            "id": 18,
+            "title": "Cat Food",
+            "description": "Nutritious cat food formulated to meet the dietary needs of your feline friend.",
+            "category": "groceries",
+            "price": 8.99,
+            "discountPercentage": 9.58,
+            "rating": 3.13,
+            "stock": 46,
+            "tags": [
+                "pet supplies",
+                "cat food"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/cat-food/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/cat-food/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 3,
+                    "comment": "Would not recommend!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Noah Lewis"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Very unhappy with my purchase!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Ruby Andrews"
+                }
+            ],
+            "returnPolicy": "No return policy"
+        },
+        {
+            "id": 23,
+            "title": "Eggs",
+            "description": "Fresh eggs, a versatile ingredient for baking, cooking, or breakfast.",
+            "category": "groceries",
+            "price": 2.99,
+            "discountPercentage": 11.05,
+            "rating": 2.53,
+            "stock": 9,
+            "tags": [
+                "dairy"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/eggs/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/eggs/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 3,
+                    "comment": "Disappointing product!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Penelope King"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Poor quality!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Eleanor Tyler"
+                }
+            ],
+            "returnPolicy": "No return policy"
+        },
+        {
+            "id": 26,
+            "title": "Green Chili Pepper",
+            "description": "Spicy green chili pepper, ideal for adding heat to your favorite recipes.",
+            "category": "groceries",
+            "price": 0.99,
+            "discountPercentage": 1,
+            "rating": 3.66,
+            "stock": 3,
+            "tags": [
+                "vegetables"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 4,
+                    "comment": "Great product!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Luna Russell"
+                },
+                {
+                    "rating": 1,
+                    "comment": "Waste of money!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Noah Lewis"
+                }
+            ],
+            "returnPolicy": "30 days return policy"
+        },
+        {
+            "id": 29,
+            "title": "Juice",
+            "description": "Refreshing fruit juice, packed with vitamins and great for staying hydrated.",
+            "category": "groceries",
+            "price": 3.99,
+            "discountPercentage": 12.06,
+            "rating": 3.94,
+            "stock": 50,
+            "tags": [
+                "beverages"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/juice/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/juice/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 5,
+                    "comment": "Excellent quality!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Nolan Gonzalez"
+                },
+                {
+                    "rating": 4,
+                    "comment": "Would buy again!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Bella Grant"
+                }
+            ],
+            "returnPolicy": "No return policy"
+        },
+        {
+            "id": 32,
+            "title": "Milk",
+            "description": "Fresh and nutritious milk, a staple for various recipes and daily consumption.",
+            "category": "groceries",
+            "price": 3.49,
+            "discountPercentage": 13.74,
+            "rating": 2.61,
+            "stock": 27,
+            "tags": [
+                "dairy"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/milk/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/milk/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 4,
+                    "comment": "Very satisfied!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Nicholas Bailey"
+                },
+                {
+                    "rating": 3,
+                    "comment": "Would not buy again!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Harper Turner"
+                }
+            ],
+            "returnPolicy": "7 days return policy"
+        },
+        {
+            "id": 41,
+            "title": "Tissue Paper Box",
+            "description": "Convenient tissue paper box for everyday use, providing soft and absorbent tissues.",
+            "category": "groceries",
+            "price": 2.49,
+            "discountPercentage": 13.28,
+            "rating": 2.69,
+            "stock": 86,
+            "tags": [
+                "household essentials"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/1.webp",
+                "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/2.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 1,
+                    "comment": "Not as described!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Ariana Ross"
+                },
+                {
+                    "rating": 5,
+                    "comment": "Fast shipping!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Carter Baker"
+                }
+            ],
+            "returnPolicy": "90 days return policy"
+        }
+    ],
+    "kitchen-accessories": [
+        {
+            "id": 48,
+            "title": "Bamboo Spatula",
+            "description": "The Bamboo Spatula is a versatile kitchen tool made from eco-friendly bamboo. Ideal for flipping, stirring, and serving various dishes.",
+            "category": "kitchen-accessories",
+            "price": 7.99,
+            "discountPercentage": 2.84,
+            "rating": 3.27,
+            "stock": 37,
+            "tags": [
+                "kitchen tools",
+                "utensils"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 5,
+                    "comment": "Awesome product!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Lucas Ramirez"
+                },
+                {
+                    "rating": 5,
+                    "comment": "Highly recommended!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Caleb Perkins"
+                }
+            ],
+            "returnPolicy": "60 days return policy"
+        },
+        {
+            "id": 64,
+            "title": "Knife",
+            "description": "The Knife is an essential kitchen tool for chopping, slicing, and dicing. Its sharp blade and ergonomic handle make it a reliable choice for food preparation.",
+            "category": "kitchen-accessories",
+            "price": 14.99,
+            "discountPercentage": 18.86,
+            "rating": 3.26,
+            "stock": 7,
+            "tags": [
+                "kitchen tools",
+                "cutlery"
+            ],
+            "thumbnail": "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 2,
+                    "comment": "Very disappointed!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Aaliyah Martinez"
+                },
+                {
+                    "rating": 5,
+                    "comment": "Fast shipping!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Addison Wright"
+                }
+            ],
+            "returnPolicy": "7 days return policy"
+        }
+    ],
+    "beauty": [
+        {
+            "id": 1,
+            "title": "Essence Mascara Lash Princess",
+            "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+            "category": "beauty",
+            "price": 9.99,
+            "discountPercentage": 10.48,
+            "rating": 2.56,
+            "stock": 99,
+            "tags": [
+                "beauty",
+                "mascara"
+            ],
+            "brand": "Essence",
+            "thumbnail": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp",
+            "images": [
+                "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+            ],
+            "reviews": [
+                {
+                    "rating": 3,
+                    "comment": "Would not recommend!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Eleanor Collins"
+                },
+                {
+                    "rating": 4,
+                    "comment": "Very satisfied!",
+                    "date": "2025-04-30T09:41:02.053Z",
+                    "reviewerName": "Lucas Gordon"
+                }
+            ],
+            "returnPolicy": "No return policy"
+        }
+    ]
+}
